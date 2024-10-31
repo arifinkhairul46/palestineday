@@ -1,0 +1,77 @@
+/* Global styles */
+body {
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.5;
+    max-width: 500px;
+    margin: auto !important;
+}
+
+.container {
+    padding: 1rem;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2px;
+    text-align: center;
+}
+
+.form-control {
+    border-radius: 1rem !important;
+    border-color: #0094D7 !important;
+    --bs-border-width: 2px;
+}
+
+.form-control-group {
+    border: 0;
+    outline: 0;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    margin-left: 5px;
+    width: 68.8%;
+}
+
+.modal-dialog {
+    max-width: 480px !important;
+}
+
+.input-group {
+    width: 100%;
+    border: 2px solid #0094D7;
+    outline: 0;
+    border-radius: 1rem;
+    height: 100%;
+    text-align: left;
+    box-shadow: 0px 0px 1px 0px;
+  }
+
+
+  .select2 + .select2-container .select2-selection {
+    border: 2px solid #0094D7;
+    border-radius: 1rem;
+    border-color: #0094D7 !important;
+    min-height: 35px;
+
+  }
+
+.btn-simpan {
+    background-color: #FFDC15 !important;
+    border: none !important;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem !important;
+    cursor: pointer;
+}
+
+.btn-nominal {
+    background-image: linear-gradient(to right, #0094D7, #15E4FF);
+    color: white !important;
+    width: 30%;
+    border: none !important;
+    padding: 0.5rem 1rem;
+    border-bottom-left-radius: 2rem !important;
+    border-top-right-radius: 1rem !important;
+    border-bottom-right-radius: 1rem !important;
+    cursor: pointer;
+}
