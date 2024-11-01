@@ -6,6 +6,8 @@ use App\Models\Donatur;
 use App\Models\ListDonasi;
 use App\Models\Nominal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,9 @@ class HomeController extends Controller
     {
         $opsi_nominal = Nominal::all();
 
-        $nama_siswa = Donatur::select('nama_anak', 'sekolah_id')->get();
+        $nama_siswa = Donatur::select('nama_anak', 'sekolah_id', 'lok.lokasi')
+                            ->leftJoin('m_lokasi as lok', 'lok.id', 'm_siswa_aktif.sekolah_id' )
+                            ->get();
 
         return view('index', compact('opsi_nominal', 'nama_siswa'));
     }
@@ -23,16 +27,20 @@ class HomeController extends Controller
         $nama_siswa = $request->nama_siswa;
         $no_hp = $request->no_hp;
         $nominal = $request->nominal;
+        $nominal2 = str_replace(",", "", $nominal);
         $doa = $request->doa;
         $tgl_donasi = date('Y-m-d H:i:s');
 
         $get_lokasi = Donatur::where('nama_anak', $nama_siswa)->first();
+        $jumlah_donasi_masuk = ListDonasi::select(DB::raw('sum(nominal_donasi) as jumlah_donasi'))->where('status', 2)->first();
+        $jumlah_donasi = $jumlah_donasi_masuk->jumlah_donasi;
+        $jumlah_donasi = number_format($jumlah_donasi);
 
         $store_donasi = ListDonasi::create([
             'nama_ortu' => $nama_ortu,
             'nama_siswa' => $nama_siswa,
             'no_hp' => $no_hp,
-            'nominal_donasi' => $nominal,
+            'nominal_donasi' => $nominal2,
             'doa' => $doa,
             'tgl_donasi' => $tgl_donasi,
             'status' => 1,
@@ -57,6 +65,20 @@ Aamiin Ya Allah Ya Rabbal 'Alamin🤲🤲🤲
 *Menyalakan Cinta Palestina dalam Karya*";
 
         $send_notif = $this->send_notif($no_hp, $message);
+
+        // send notif telegram
+        $id_group_tele = env('TELEGRAM_ID_GROUP');
+        $message_tele = "Mitra Kebaikan Ayah Bunda *$nama_ortu* berpartisipasi dalam Program Palestine Day 2025 sebesar *Rp. $nominal*
+ 
+Pesan dan Doa : 
+ 
+Alhamdulillah saat ini dana sudah terkumpul *Rp. $jumlah_donasi*";
+        
+        $send_tele = Telegram::sendMessage([
+            'chat_id' => $id_group_tele, 
+            'text' => $message_tele,
+            'parse_mode' => 'markdown'
+        ]);
 
         return redirect()->back()->with('success', 'Terimakasih telah berdonasi');
 

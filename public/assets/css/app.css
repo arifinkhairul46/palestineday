@@ -29,8 +29,8 @@ body {
     outline: 0;
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
-    margin-left: 5px;
-    width: 68.8%;
+    margin-left: 4px;
+    width: 68%;
 }
 
 .modal-dialog {
@@ -38,7 +38,7 @@ body {
 }
 
 .input-group {
-    width: 100%;
+    max-width: 100%;
     border: 2px solid #0094D7;
     outline: 0;
     border-radius: 1rem;
@@ -67,7 +67,7 @@ body {
 .btn-nominal {
     background-image: linear-gradient(to right, #0094D7, #15E4FF);
     color: white !important;
-    width: 30%;
+    width: 31%;
     border: none !important;
     padding: 0.5rem 1rem;
     border-bottom-left-radius: 2rem !important;

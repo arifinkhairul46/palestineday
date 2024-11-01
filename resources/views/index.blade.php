@@ -38,7 +38,7 @@
                 <select id="nama_siswa" name="nama_siswa" class="select2 form-control px-3" required>
                     <option value="" disabled selected>-- Pilih Nama Siswa--</option>
                     @foreach ($nama_siswa as $item)
-                        <option value="{{ $item->nama_anak }}" >{{ $item->sekolah_id }} - {{ $item->nama_anak }} </option>
+                        <option value="{{ $item->nama_anak }}" >{{ $item->lokasi }} - {{ $item->nama_anak }} </option>
                     @endforeach
                 </select>
                 <span type="hidden" style="font-size: 10px; color: red" id="alertnama_siswa"> </span>
@@ -50,7 +50,7 @@
             <h6> Donasi </h6>
             
             <div class="input-group mt-2">
-                <input type="text" class="form-control-group" id="nominal" name="nominal" placeholder="Nominal Donasi" aria-label="Nominal Donasi" aria-describedby="button-nominal" required>
+                <input type="text" class="form-control-group" id="nominal" name="nominal" placeholder="Nominal Donasi"  onkeyup="cekNominal()" aria-label="Nominal Donasi" aria-describedby="button-nominal" required>
                 <button class="btn btn-nominal" type="button" id="button-nominal" data-bs-toggle="modal" data-bs-target="#opsi_nominal">Lainnya</button>    
             </div>
             <span type="hidden" style="font-size: 10px; color: red" id="alertnom"> </span>
@@ -111,6 +111,19 @@
 
     function thousandSeparated(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    var citiTimer;
+    function cekNominal() {
+    clearTimeout(citiTimer);
+        citiTimer = setTimeout(() => {
+            var nominal = $("#nominal").val();
+            
+            nominal = parseInt(nominal.replace(/,/g, ""));
+            
+            $("#nominal").val(thousandSeparated(nominal));
+            
+        }, 1000);
     }
 
     function clickNominal(nominal) {
