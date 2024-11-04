@@ -63,7 +63,7 @@
     </form>
 
     <div class="form-check mt-3">
-        <input class="form-check-input" type="checkbox" value="" id="check_setuju" onclick="oncheck()">
+        <input class="form-check-input" style="outline: 1px solid" type="checkbox" value="" id="check_setuju" onclick="oncheck()">
         <label class="form-check-label" for="check_setuju" style="font-size: 10px">
             <i>
             Saya dengan ini menyatakan bahwa donasi yang saya berikan adalah ikhlas untuk mendukung kegiatan <b> Palestine Day 2025.</b> <br><br>
