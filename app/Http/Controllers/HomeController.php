@@ -54,7 +54,7 @@ Terimakasih Ayah Bunda $nama_ortu sudah berkenan berdonasi untuk Palestine Day 2
 
 Donasi ditransfer melalui rekening berikut :
 Bank Syariah Indonesia (BSI)
-7500 5000 63  
+7500500063  
 Atas Nama Sedekah Recehan
 ---
 Semoga Allah SWT senantiasa memberikan kelancaran aktivitas untuk Ayah Bunda $nama_ortu Sekeluarga.
