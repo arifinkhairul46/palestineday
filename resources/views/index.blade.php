@@ -4,7 +4,7 @@
 
 <div class="container">
         <div class="d-flex" style="justify-content: space-between"> 
-            <img src="{{asset('assets/images/logo_palestineday.png')}}" alt="logo_palestineday" width="50px" height="50px" >
+            <img src="{{asset('assets/images/logo_palestine_day.png')}}" alt="logo_palestineday" width="50px" height="50px" >
             <div class="title">
                 <span style="font-size: 13px"> Formulir Donasi Khusus </span>
                 <h3 style="font-size: 20px"> Palestine Day 2025 </h3>
@@ -14,7 +14,7 @@
 </div>
 
 <div class="banner">
-    <img src="{{asset('assets/images/banner-1.png')}}" alt="banner-1" width="100%" >
+    <img src="{{asset('assets/images/banner_palestineday.png')}}" alt="banner-1" width="100%" >
 </div>
 
 <div class="container">
