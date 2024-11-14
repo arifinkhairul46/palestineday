@@ -64,7 +64,7 @@ Aamiin Ya Allah Ya Rabbal 'Alamin🤲🤲🤲
 'Palestine Day 2025'
 *Menyalakan Cinta Palestina dalam Karya*";
 
-        $send_notif = $this->send_notif($no_hp, $message);
+        // $send_notif = $this->send_notif($no_hp, $message);
 
         // send notif telegram
         $id_group_tele = env('TELEGRAM_ID_GROUP');
@@ -74,14 +74,22 @@ Pesan dan Doa :
  
 Alhamdulillah saat ini dana sudah terkumpul *Rp. $jumlah_donasi*";
         
-        $send_tele = Telegram::sendMessage([
-            'chat_id' => $id_group_tele, 
-            'text' => $message_tele,
-            'parse_mode' => 'markdown'
-        ]);
+        // $send_tele = Telegram::sendMessage([
+        //     'chat_id' => $id_group_tele, 
+        //     'text' => $message_tele,
+        //     'parse_mode' => 'markdown'
+        // ]);
 
-        return redirect()->back()->with('success', 'Terimakasih telah berdonasi');
+        $last_id = $store_donasi->id;
+        return redirect()->route('berhasil', [$last_id]);
 
+    }
+
+    public function berhasil($last_id)
+    {
+        $donatur = ListDonasi::find($last_id);
+        // dd($donatur);
+        return view('berhasil', compact('donatur'));
     }
 
 

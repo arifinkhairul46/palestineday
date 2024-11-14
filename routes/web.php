@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/', [HomeController::class, 'simpan_donasi'])->name('simpan_donasi');
+Route::get('berhasil/{id}', [HomeController::class, 'berhasil'])->name('berhasil');
 Route::get('message', [BotTelegramController::class, 'message'])->name('pesan');
 

@@ -174,13 +174,8 @@
                 );
                 $("#simpan_donasi").submit();
             }
-
         });
-
     });
-
-
-    
 </script>
 
 @endsection
